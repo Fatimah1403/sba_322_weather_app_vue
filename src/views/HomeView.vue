@@ -14,13 +14,21 @@
                 w-full shadow-md py-2 px-1 top-[66px]"
                 v-if="searchResultsMapbox"
             >
-                <li 
-                    v-for="searhResult in searchResultsMapbox"
-                    :key="searhResult.id"
-                    class="py-2 cursor-pointer"
-                >
-                {{ searhResult.place_name }}
-                </li>
+                <p v-if="searchError">
+                    Sorry, something went wrong, please try again.
+                </p>
+                <p v-if="!serverError && searchResultsMapbox.length === 0">
+                    No results match your query,  please try again
+                </p>
+                <template v-else>
+                    <li 
+                        v-for="searhResult in searchResultsMapbox"
+                        :key="searhResult.id"
+                        class="py-2 cursor-pointer"
+                    >
+                        {{ searhResult.place_name }}
+                    </li>
+                </template>
             </ul>
         </div>
     </main>
@@ -38,6 +46,8 @@ const queryTimeout = ref(null);
 const mapboxAPIKEY = "pk.eyJ1IjoiZmF0aW1haDE0MDMiLCJhIjoiY2xyYmR2eDFwMG03cTJqcDdza3kxZzdlbiJ9.UxnOTbd77ZuIJmbOXaF4WA"
 const mapboxUrl = "https://api.mapbox.com/geocoding/v5/mapbox.places/"
 const searchResultsMapbox = ref([]);
+const searchError = ref(null);
+
 
 const getSearchResults = () => {
     clearTimeout(queryTimeout.value);
@@ -53,16 +63,14 @@ const getSearchResults = () => {
                         },
                     }
                 );
-                // console.log('Bug');
-                console.log(result.data);
+                // console.log(result.data);
                 searchResultsMapbox.value = result.data.features || [];
-                // console.log(JSON.parse(JSON.stringify(searchResultsMapbox.value)));
-                console.log(searchResultsMapbox.value);
+                // console.log(searchResultsMapbox.value);
                 return;
             }
             searchResultsMapbox.value = null;
-        } catch (error) {
-            console.error('Error fetching search results:', error);
+        } catch  {
+            searchError.value = true;
         }
     }, 10000);
 }

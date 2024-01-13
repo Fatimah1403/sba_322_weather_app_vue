@@ -1,14 +1,37 @@
 # sba_322_weather_app
+## Weather App
 
-This template should help get you started developing with Vue 3 in Vite.
+## Overview
 
-## Recommended IDE Setup
+Weather App is a simple web application that allows users to search for weather information based on city or state/location. The application utilizes the Mapbox API to provide geocoding and location-based services.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Features
 
-## Customize configuration
+- **Search by Location:** Enter the name of a city or state to retrieve real-time weather information.
+- **Map Integration:** Visualize the location on a map using Mapbox services.
+- **Responsive Design:** Enjoy a seamless experience on various devices, from desktops to mobile phones.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Work in Progress
+
+⚠️ **This project is still in active development. Features and improvements are being added regularly. Check back for updates!**
+
+
+## Technologies Used
+
+- Vue.js 3
+- Axios
+- Mapbox API
+- Tailwind CSS
+
+## Getting Started
+
+To run the Weather App locally, follow these steps:.
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Fatimah1403/sba_322_weather_app_vue.git
+   cd sba_322_weather_app_vue
 
 ## Project Setup
 
