@@ -11,7 +11,9 @@
             />
             <ul 
                 class="absolute bg-weather-secondary text-white 
-                w-full shadow-md py-2 px-1 top-[66px]">
+                w-full shadow-md py-2 px-1 top-[66px]"
+                v-if="searchResultsMapbox"
+            >
                 <li 
                     v-for="searhResult in searchResultsMapbox"
                     :key="searhResult.id"
@@ -28,7 +30,7 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
-import { preview } from "vite";
+// import { preview } from "vite";
 
 
 const searchQuery = ref("")
