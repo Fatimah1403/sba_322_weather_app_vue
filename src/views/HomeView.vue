@@ -9,6 +9,17 @@
                 class="py-2 px-1 w-full bg-transparent border-b focus:border-weather-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#004E71]"
                 style="--placeholder-color: black;"
             />
+            <ul 
+                class="absolute bg-weather-secondary text-white 
+                w-full shadow-md py-2 px-1 top-[66px]">
+                <li 
+                    v-for="searhResult in searchResultsMapbox"
+                    :key="searhResult.id"
+                    class="py-2 cursor-pointer"
+                >
+                {{ searhResult.place_name }}
+                </li>
+            </ul>
         </div>
     </main>
 </template>
@@ -17,6 +28,7 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
+import { preview } from "vite";
 
 
 const searchQuery = ref("")
@@ -39,12 +51,11 @@ const getSearchResults = () => {
                         },
                     }
                 );
-                console.log('Bug');
+                // console.log('Bug');
                 console.log(result.data);
                 searchResultsMapbox.value = result.data.features || [];
                 // console.log(JSON.parse(JSON.stringify(searchResultsMapbox.value)));
-                console.log('Hi:', searchResultsMapbox.value);
-                console.log("here")
+                console.log(searchResultsMapbox.value);
                 return;
             }
             searchResultsMapbox.value = null;
